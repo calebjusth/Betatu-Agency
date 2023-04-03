@@ -1,0 +1,218 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup-design.css' %}">
+<style type="text/css">
+	body{
+		background: black;
+		color: white;
+	}
+	#logo{
+			display: none;
+		}
+		#logo-font{
+			display: none;	
+		}
+		.login-r {
+			margin: 0;
+		}
+		.login-r img{
+			object-fit: contain;
+			width: 130px;
+			height: 130px;
+			border-radius: 50%;
+			margin: 0;
+
+		}
+		input{
+			border: none !important;
+			display: flex;
+			border: 2px solid #b621f3 !important;
+			width: 40% !important;
+			color: white;
+			background-color: transparent !important;
+		}
+		#pic{
+			border: none !important;
+			background-color: none !important;
+		}
+		button{
+			width: 40% !important;
+		}
+		nav{
+			color: white;
+			position: absolute;
+			background: transparent;
+			width: 100%;
+			display: flex;
+		}
+		nav li a{
+			color: white;
+		}
+		.sub-menu-wrap{
+			top: 100%;
+			right: 10%;
+			width: 100%;
+			position: fixed !important;
+			max-height: 0px;
+			overflow: hidden;
+			border-radius: 20px;
+			margin-right: 4em;
+		}
+		.sub-menu-wrap.open-menu{
+			transition: .35s;
+			max-height: 100%;
+		}
+		.sub-menu{
+
+			box-sizing: border-box;
+			background: black !important;
+			padding: 20px;
+			margin: 10px;
+		}
+		.more{
+			display: flex;
+			align-items: center;
+		}
+		.sub-menu-link{
+			display: flex;
+			text-decoration: none;
+			margin: 12px 0;
+		}
+		nav .con{
+			display: flex;
+			justify-content: flex-end;
+
+		}
+		hr{
+			background: linear-gradient(45deg, #131086, #b621f3);
+		}
+		label{
+			display: none !important;
+		}
+
+</style>
+
+	<title>betatu | Profile Set up</title>
+
+	<br>
+
+<nav>
+	<div class="con">
+	<i class="fa fa-bars" style="font-size: 40px; color: black;" onclick="togglemenu()"></i>
+</div>
+	<div class="sub-menu-wrap" id="submenu">
+		<div class="sub-menu">
+			<div class="more">
+
+	<ul>
+		<li><a href="{% url 'profiles' %}" class="sub-menu-link">Home</a></li>
+		<hr>
+		<li><a href="{% url 'profile_setup' %}" class="sub-menu-link">Edit Profile</a></li>
+		<hr>
+		<li><a href="{% url 'blog' %}" class="sub-menu-link">Read Blogs</a></li>
+		<hr>		
+		<li><a href="/" class="sub-menu-link">Help & Support</a></li>
+		<hr>
+		<li><a href="{% url 'logout' %}" class="sub-menu-link">Log Out</a></li>
+	</ul>
+</div>
+</div>
+</div>
+
+</nav>
+<br>
+<br>
+<br>
+	<center>
+
+<h1 style="text-transform: uppercase;">Hey There {{user.first_name}}</h1>
+<form class="login-form" action="" method="POST" autocomplete="off">
+				{% csrf_token %}
+
+				<div class="login-form-content">
+					{% for message in messages %}
+			<p id="messages">{{message}}</p>
+			{% endfor %}
+				<div class="login-r">
+			<img src="{% static 'images/For profile.jpg' %}">
+			<input type="file" name="profile_pic" placeholder="upload your pic" id="pic">
+		</div> 
+					<div class="form-item">
+						<label for="last_name">Mobile Number</label>
+						<input type="number" id="last-name" name="phone" placeholder="Add a number that you want people to contact you with" required>
+					</div>
+					<div class="form-item">
+						<label for="user_bio">Bio</label>
+						<input type="text" id="first-name" name="user_bio" placeholder="E.g I am a Software Developer...">
+					</div>
+					<div class="form-item">
+						<label for="level">Level of Edu</label>
+						<input list="lv" id="last-name" name="educational_background" placeholder="Level of education">
+						<datalist id="lv">
+							<option>Certificate</option>
+							<option>Diploma or equvilant</option>
+							<option>Associate Degree</option>
+							<option>University Degree</option>
+							<option>Masters</option>
+							<option>PHD</option>
+							
+						</datalist>
+					</div>
+					<div class="form-item">
+						<label for="email">Years of Experience</label>
+						<input list="exp" id="email" name="experience" placeholder="Years of Experience">
+						<datalist id="exp">
+							<option>6 month and below</option>
+							<option>1 year and below</option>
+							<option>2 years and below</option>
+							<option>5 years and below</option>
+							<option>10 years and below</option>
+							<option>Above 10 years</option>
+						</datalist>
+					</div>
+					<div class="form-item">
+						<label for="phone"></label>
+						<input list="fp" id="field" name="profession" placeholder="Field of Profession">
+						<datalist id="fp">
+							<option>Software Development</option>
+							<option>Modeling and Movie Productions</option>
+							<option>Architecture</option>
+							<option>Managment</option>
+							<option>Accounting and Finance Managment</option>
+							<option>Teaching education</option>
+							<option>Sales and promotions</option>
+							<option>Other</option>
+						</datalist><br>
+
+						<p>Upload Your CV</p>
+						<input type="file" id="pic" name="user_cv">
+
+
+
+
+						<button style="margin-top: 1.5em;" type="submit" name="Create User">Save Changes</button>
+
+					</div>
+
+					
+					
+				
+			</form>
+
+
+
+<script type="text/javascript">
+let submenu = document.getElementById('submenu');
+
+function togglemenu() {
+		submenu.classList.toggle("open-menu")
+	}	
+
+</script>
+{% endif %}
+{% endblock content %}

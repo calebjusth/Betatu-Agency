@@ -1,0 +1,219 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+	<title>betatu | Home Page</title>
+	<header>
+
+<ul class="navlist">
+     <p><a href="#home">Home</a></p>
+      <p><a href="#about">About</a></p>
+       <p><a href="#Testimonials">Testimonials</a></p>
+          <p><a href="#contact">Contact </a></p>
+          <i class="fa fa-menu" id="menu-btn"></i>
+
+</ul>
+</header>
+
+
+<section id="home" class="home">
+<div class="home-container" style="margin-top: 50px;">
+		<div class="home-right-side">
+			<img src="{% static 'images/work.jpg' %}">
+		</div>
+<div class="home-page-left">
+			<div class="page-header" style="margin: 0;">
+				<h3>Welcome to </h3>
+				<h1 style="font-size: 70px ; margin: 0;">Betatu Agency</h1>
+				<h2>Where you find your desired career path from just your moblie device or computer</h2>
+				<h4>Let's Work together to achieve Goals and Greatness</h4>
+				
+				<a href="/sign_up/" id="reg-button">Register Here</a>
+			</div>
+</div>
+</section>
+<!---about--->
+<section id="about" class="about">
+<div class="home-container">
+	<div class="home-page-right">
+			<div class="page-header">
+				<h1  style="font-size: 50px;">About<span class="theme">Us</span></h1>
+				<p style="margin-top: -3rem; letter-spacing: 10px; font-size: 25px;"><span class="theme">Betatu</span> Agency<p>
+				<p>Its an Ethiopian Based online agency, established towards the support of people that are out of work or between jobs. Efrem the founder who believes that hard-work can uplift and change anyone regardless of the type of job,went above and beyond to build a firm that's the first of its kind, with our system people and specially those in non-professional ventures or blue collores will have the oppurtunity to work and change</p>
+
+				
+			</div>
+	</div>
+
+
+		<div class="home-right-side">
+			<img src="{% static 'images/wm-lp.jpg' %}">
+		</div>
+</div>
+
+	<center><h1  style="font-size: 50px; margin: -10px;">How It<span class="theme"> Works</span></h1>
+		<p style="margin: 0;">See that our system will work out for you</p></center>
+<div class="expl-text">
+						<ul class="count">
+							<li><span><i class="fa fa-upload"></i></span> <br>Register on our site and complete your profile.<br>Eployees tend to know who they will hire<br> so make sure you have a good profile</li>
+
+							<li><span><i class="fa fa-mobile"></i></span> <br>With the registration up and done<br>with just a click you can get all the jobs u need nearby your area<br>Our system will send network signals to nearby employees</li>	
+
+					        <li><span><i class="fa fa-phone"></i></span> <br>once you're paired with the best job on our system,<br> you be notified via email or receive a call either<br> from a potiential offer or our office</li>					     
+					        <li><span><i class="fa fa-suitcase"></i></span> <br>All job offers and services on our site is free forever<br>We seek to grow together hence we do not charge <br>any payment for it</li>
+					     </ul>
+				</div>
+
+<div class="home-container" style="justify-content: space-evenly; margin-top: 10em ;">
+	<div class="home-page-right">
+			<div class="page-header" style="margin-left: 15rem;">
+				<h1  style="font-size: 40px;">What Are You <span class="theme">Waiting</span> For<span style="letter-spacing: 10px; color: #131086;"> !</span></h1>
+				<p style="margin-top: -1.5rem; letter-spacing: 10px; font-size: 20px;"><span style="letter-spacing: 10px;" class="theme">Download </span>The App<br>And Get <span style="letter-spacing: 10px;" class="theme">Connected</span><p>
+
+
+				<div class="download">
+					<a href="#"><img height="80" id="google" width="180"  src="{% static 'images/google.png' %}"></a>
+					<a href="#"><img height="70" width="180"  src="{% static 'images/apple.png' %}"></a>
+				</div>		
+			</div>
+	</div>
+
+
+		<div class="home-right-side">
+			<img src="{% static 'images/online-meeting.jpg' %}">
+		</div>
+</div>
+
+</section>
+		<div class="heading1">
+   <h6>Tesimonials</h6>
+   <h1  style="font-size: 50px; margin: -10px;">What our <span class="theme">happy</span><br><span class="theme">clients</span> are saying</h1>
+   <p>Don't take our word for it other people are<br> spreading the word<br></p>
+</div>
+<section id="Testimonials" class="Testimonials" style="background: whitesmoke;">
+	{% for t in testimonial_list %} 
+		<div class="swiper mySwiper container">
+			<div class="swiper-wrapper content">
+				<div class="swiper-slide card">
+					<div class="card-content">
+						<div class="image">
+							<img src="{% static 'images/multi-ms-icon.jpg' %}">
+						</div>
+
+
+						<div class="name-profession">
+							<span class="name">{{t.experience}}</span>
+							<span class="profession">{{t.name_of_testifier}}</span>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+				{% endfor %}
+
+</section>
+
+
+
+<section id="contact" class="contact"  class="Testimonials" style="background: whitesmoke;">
+		<div class="heading2">
+   <h6>Meet the Sqaud</h6>
+   <h1  style="font-size: 50px; margin: -10px;">Our Teams</h1>
+   <p>We are a team of modaraters, creative thinkers we approch work <br>we make the most out of it<br></p>
+</div>
+
+			{% for s in team_list %}
+		<div class="swiper mySwiper container">
+			<div class="swiper-wrapper content">
+	
+				<div class="swiper-slide card">
+					<div class="card-content">
+						<div class="image">
+							<img src="{% static '' %}">
+						</div>
+
+						<div class="media-icons">
+							<i class="fa fa-facebook"></i>
+							<i class="fa fa-twitter"></i>
+							<i class="fa fa-github"></i>
+
+						</div>
+						<div class="name-profession">
+							<span class="name">{{s.name}}</span>
+							<span class="profession">{{s.profession}}<br>{{s.position_in_betatu}}</span>
+						</div>
+
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+
+						<div class="button">
+							<button class="hireme">Contact Me</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+			
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+	{% endfor %}
+
+<center>
+<div id="contact-div"style="display: flex; background: linear-gradient(45deg, #131086, #b621f3); width: 50em; height: 100%; border-radius: 30px 30px 30px 0; color: ghostwhite !important;">
+	<center><div style="margin-top: 7rem; margin-left: 2rem; animation-direction: unset; align-content: center;">
+<p>Our team is more than ready<br> to support you</p>
+</div>
+
+
+
+
+</center>
+<div style="width:3px ; height: 15em; background: white; margin: 3rem; "> </div>
+<div>
+		<div style="display:table-footer-group ; margin: 5rem;">
+		<h1>Call Us</h1>
+			<p>0900000000</p>
+			<p>0900000000</p>
+		</div><br>
+			<div>
+				<h3>Email Us</h3>
+				<p>support@lion.com</p>
+			</div>
+</div>
+<div style="width:3px ; height: 15em; background: white; margin: 3rem; "> </div>
+<div style=" margin-right: 2rem; animation-direction: unset; align-content: center;">
+	<h1>Our Address</h1></br>
+	<p>Go to the junctions of heaven</p>
+</div>
+</div>
+</center>
+</section>
+
+
+	 <div class="copyright">
+  <p>© 2022 All rights reserved | Betatu Agency | Designed and Developed by Caleb Wesley |<a href="#" style="text-decoration: none; color: #b621f3;"> Naleb Software Development </a> </p><br>
+    <div class="icon">
+       <a href="#"><iconify-icon icon="line-md:facebook"></iconify-icon></a>
+       <a href="#"><iconify-icon icon="akar-icons:tiktok-fill"></iconify-icon></a>
+       <a href="#"><iconify-icon icon="line-md:instagram"></iconify-icon></a>
+       <a href="#"><iconify-icon icon="line-md:twitter"></iconify-icon></a>
+       <a href="#"><iconify-icon icon="ant-design:youtube-outlined"></iconify-icon></a>
+       
+    </div>
+</div>	
+{% endblock content %}
